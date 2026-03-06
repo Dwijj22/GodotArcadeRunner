@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://fxy54uif0x7o"]
+
+[ext_resource type="PackedScene" uid="uid://cjt11ys15hysk" path="res://scenes/player/player.tscn" id="1_elqb8"]
+[ext_resource type="Script" uid="uid://dmhltim3hjta1" path="res://scripts/ObstacleSpawner.gd" id="2_rvslj"]
+[ext_resource type="PackedScene" uid="uid://cs2ixdb6drqnk" path="res://scripts/obstacle.tscn" id="3_0bbpv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rvslj"]
+
+[node name="Main" type="Node2D" unique_id=1832889604]
+
+[node name="Ground" type="StaticBody2D" parent="." unique_id=1178226417]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=452031475]
+shape = SubResource("RectangleShape2D_rvslj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground" unique_id=544663829]
+
+[node name="Player" parent="." unique_id=1751403130 instance=ExtResource("1_elqb8")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=761855996]
+position = Vector2(-162, -312)
+
+[node name="ObstacleSpawner" type="Node2D" parent="." unique_id=77888691]
+script = ExtResource("2_rvslj")
+obstacle_scene = ExtResource("3_0bbpv")
+spawn_y = 10.0
+
+[node name="Timer" type="Timer" parent="ObstacleSpawner" unique_id=1252213202]
+wait_time = 15.0
+autostart = true
